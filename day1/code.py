@@ -1,9 +1,9 @@
 import time
 start = time.time()
 
-# with open("input","r") as f:
+# with open("input/input","r") as f:
 #     data = f.readlines()
-with open("biginput","r") as f:
+with open("input/biginput","r") as f:
     data = f.readlines()
 
 num_vals = {
