@@ -1,6 +1,8 @@
-with open("input/input","r") as f:
+from time import time
+with open("input/biginput","r") as f:
     data = f.read()
 
+start1 = time()
 def part1(data):
     sections = list(map(str.rstrip,data.split("\n\n")))
     seeds = [int(x) for x in sections[0].split(" ")[1:]]
@@ -29,8 +31,9 @@ def part1(data):
     
     return min(seeds)
 
-print(part1(data))
+print(f"Part 1: {part1(data)} - {time() - start1}s")
 
+start2 = time()
 def part2(data):
     sections = list(map(str.rstrip,data.split("\n\n")))
     seeds = [int(x) for x in sections[0].split(" ")[1:]]
@@ -48,23 +51,13 @@ def part2(data):
             drs = int(conv_data[0])
             srs = int(conv_data[1])
             r = int(conv_data[2])
-            # range, source range start, source range end, dest range start, dest range end
             seed_conv_dict[sec_type[1]].append([drs-srs,srs,srs+r-1])
-            if srs < drs:
-                print(f"Negative conversion found: {line}. Created conv record {seed_conv_dict[sec_type[1]][-1]}")
-    print(f"\nAvailable seed conversions:")
-    for k in seed_conv_dict:
-        print(f"{k}: {seed_conv_dict[k]}")
     conversions = ["seed","soil","fertilizer","water","light","temperature","humidity","location"]
     for conv_index in range(1,len(conversions)):
-        print("\n=====\n")
-        print(f"Preparing {conversions[conv_index-1]}-to-{conversions[conv_index]} conversion\n")
-        print(f"Current seed data: {seed_range}")
         dest = conversions[conv_index]
         conv_data = seed_conv_dict[dest]
         count = 0
         for seed_data in seed_range:
-            #seed_data: [start,end]
             for conv in conv_data:
                 if (seed_data[0] >= conv[1] and seed_data[0] <= conv[2]) or (seed_data[1] >= conv[1] and seed_data[1] <= conv[2]):
                     if seed_data[0] >= conv[1]:
@@ -79,19 +72,13 @@ def part2(data):
                     if start > seed_data[0]:
                         sliced = [seed_data[0],start-1]
                         seed_range.append(sliced)
-                        print(f"Appending {sliced} due to {seed_data} with conv {conv}")
                     if end < seed_data[1]:
                         sliced = [end+1,seed_data[1]]
                         seed_range.append(sliced)
-                        print(f"Appending {sliced} due to {seed_data} with conv {conv}")
                     final_range = [start+conv[0],end+conv[0]]
                     seed_range[count] = final_range
-                    if final_range[0] == 0:
-                        print(f"Calculated start of 0 for {seed_data} with conv {conv}")
                     break
             count += 1
-
-        print(f"\nUpdated seed data: {seed_range}")
         count = 1
         for seed_data in seed_range:
             sd = seed_data
@@ -106,7 +93,6 @@ def part2(data):
                     count2 -= 1
                 count2 += 1
             count +=1 
-        print(f"Consolidated seed data: {seed_range}")
     low = [x[0] for x in seed_range]
     return min(low)
-print(part2(data))
+print(f"Part 2: {part2(data)} - {time() - start2}s")
