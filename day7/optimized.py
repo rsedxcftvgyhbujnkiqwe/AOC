@@ -32,10 +32,11 @@ def get_hand_type(hand,part):
         return 3
     elif 2 in type_list:
         if len(type_list) == 3:
-            if part == 2 and jokers == 2:
-                return 5
-            elif part == 2 and jokers == 1:
-                return 4
+            if part == 2:
+                if jokers == 2:
+                    return 5
+                elif jokers == 1:
+                    return 4
             return 2
         else:
             if part == 2 and jokers > 0:
