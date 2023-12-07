@@ -73,8 +73,7 @@ solution = solve(data,1)
 timediff = time.time()-p1s
 print(f"Part 1: {solution} ({timediff})\n")
 
-
 p2s = time.time()
 solution = solve(data,2)
 timediff = time.time()-p2s
-print(f"Part 1: {solution} ({timediff})\n")
+print(f"Part 2: {solution} ({timediff})\n")
