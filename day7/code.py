@@ -215,6 +215,8 @@ def part2(data):
             rank = j + 1 + ranks
             winadd = card_data[i][j][1]*rank
             winnings += winadd
+            if -1 in card_data[i][j][0]:
+                print(f"Joker card: {card_data[i][j][0]}, rank {rank} score {winadd}")
         ranks += len(card_data[i])
     return winnings
 print(f"Part 2: {part2(data)} ({time.time() - p2s})")
