@@ -57,9 +57,7 @@ def solve(data,part):
     card_data = [[],[],[],[],[],[],[]]
     data = list(map(lambda x: [x[0],int(x[1])],map(lambda x: x.rstrip().split(" "),data)))
     cmap = card_map_joker if part == 2 else card_map
-    c = 0
     for line in data:
-        c += 1
         hand = line[0]
         bet = line[1]
         hand_type = get_hand_type(hand,part)
