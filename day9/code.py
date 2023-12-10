@@ -1,4 +1,4 @@
-with open("input/input","r") as f:
+with open("input/biginput","r") as f:
     data = f.readlines()
 
 def seq_dif(input_list):
@@ -36,7 +36,6 @@ def part2(data):
             line_set.append(cur_line)
         for i in range(len(line_set)-1,0,-1):
             line_set[i-1].insert(0,line_set[i-1][0] - line_set[i][0])
-        print(line_set)
         total += line_set[0][0]
     return total
 
