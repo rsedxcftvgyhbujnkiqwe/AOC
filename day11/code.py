@@ -53,7 +53,13 @@ def expand_galaxy(gal,empty_cols,empty_rows,amount):
     skipped_cols = 0
     for i,galaxy in enumerate(exp_gal):
         if skipped_cols < len(empty_cols) and galaxy[1] > empty_cols[skipped_cols]:
-            skipped_cols += 1
+            for j,val in enumerate(empty_cols):
+                if val > galaxy[1]:
+                    skipped_cols = j
+                    break
+                elif galaxy[1] > val and skipped_cols+1 == len(empty_cols):
+                    skipped_cols += 1
+                    break
         exp_gal[i][1] += skipped_cols*max(0,amount-1)
     new_cols = exp_gal[-1][1]
 
@@ -61,7 +67,13 @@ def expand_galaxy(gal,empty_cols,empty_rows,amount):
     skipped_rows = 0
     for i,galaxy in enumerate(exp_gal):
         if skipped_rows < len(empty_rows) and galaxy[0] > empty_rows[skipped_rows]:
-            skipped_rows += 1
+            for j,val in enumerate(empty_rows):
+                if val > galaxy[0]:
+                    skipped_rows = j
+                    break
+                elif galaxy[0] > val and skipped_rows+1 == len(empty_rows):
+                    skipped_rows += 1
+                    break
         exp_gal[i][0] += skipped_rows*max(0,amount-1)
     new_rows = exp_gal[-1][0]
 
