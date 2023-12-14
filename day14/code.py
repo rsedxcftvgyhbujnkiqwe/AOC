@@ -1,3 +1,4 @@
+import time
 with open("input/input","r") as f:
     data =  f.read().rstrip().split("\n")
 
@@ -37,20 +38,19 @@ def cycle(grid):
 def part1(data):
     data = [list(x) for x in data]
     return count_grid(shift_up(data))
-
-print(part1(data))
+p1s = time.time()
+print(part1(data),time.time() - p1s)
 
 def to_line(grid):
     return [''.join([''.join(x) for x in grid])]
 
 def part2(data):
-    total = 0
-    row_vals = [x+1 for x in reversed(range(len(data)))]
     data = [list(x) for x in data]
     grids = [data]
     grid_cache = [to_line(data)]
     target_num = 1000000000
     for i in range(target_num):
+        print("Iterating",i,end="\r")
         cycled_grid = cycle(grids[-1])
         cycled_cache = to_line(cycled_grid)
         if cycled_cache in grid_cache:
@@ -58,4 +58,5 @@ def part2(data):
             return count_grid(grids[((target_num-index) % (i-index+1)) + index])
         grids.append(cycled_grid)
         grid_cache.append(cycled_cache)
-print(part2(data))
+p2s = time.time()
+print(part2(data),time.time()-p2s)
