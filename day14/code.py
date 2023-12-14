@@ -7,7 +7,7 @@ def count_grid(grid):
     total = 0
     row_vals = [x+1 for x in reversed(range(len(grid)))]
     for i,row in enumerate(grid):
-        for j,val in enumerate(row):
+        for val in row:
             if val == "O":
                 total += row_vals[i]
     return total
