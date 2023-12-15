@@ -1,12 +1,15 @@
+from functools import lru_cache
 with open("input/input","r") as f:
     data = f.read().rstrip().split(",")
 
+@lru_cache
 def get_string_value(string):
     value = 0
     for character in string:
         value = get_value(value,character)
     return value
 
+@lru_cache
 def get_value(current_value,character):
     return ((current_value+ord(character))*17)%256
 
@@ -17,13 +20,6 @@ def part1(data):
     return total
 
 print(part1(data))
-
-memo = {}
-def get_box(label):
-    if label in memo:
-        return memo[label]
-    else:
-        return get_string_value(label)
 
 def part2(data):
     total = 0
@@ -36,7 +32,7 @@ def part2(data):
             label = val[:-2]
             add = True
         lens = val[-1]
-        box = get_box(label)
+        box = get_string_value(label)
         lens_index = -1
         if len(boxes[box]) != 0:
             for i,val in enumerate(boxes[box]):
