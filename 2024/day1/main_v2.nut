@@ -1,7 +1,6 @@
 dofile("../lib/stdlib.nut")
 local start_time = time()
 
-local file_data = FileToLineArray("input/bigboy.txt")
 local left_col = []
 local right_col = []
 local p1_value = 0
@@ -9,7 +8,7 @@ local p2_value = 0
 local left_count = {}
 local right_count = {}
 
-foreach(line in file_data)
+function processline(line)
 {
 	local nums = split(line," ")
 
@@ -27,8 +26,33 @@ foreach(line in file_data)
 	if (l_int in right_count) p2_value +=  l_int * right_count[l_int]
 	if (r_int == l_int) p2_value -= r_int
 }
+
+local fileblob = file("input/bigboy.txt", "rb");
+local text = "";
+if (fileblob) {
+	local size = fileblob.len();
+	local blobData = fileblob.readblob(size);
+	for (local i = 0; i < size; i++) {
+		local char = blobData[i].tochar();
+		if (char=="\n")
+		{
+			processline(text)
+			text = ""
+		}
+		else
+		{
+			text += char
+		}
+	}
+	if(text != "") processline(text)
+	fileblob.close();
+}
+else
+	throw false
+
 left_col.sort(@(a,b) a <=> b)
 right_col.sort(@(a,b) a <=> b)
+
 for(local i=0;i<left_col.len();i++)
 {
 	p1_value += abs(left_col[i] - right_col[i])
