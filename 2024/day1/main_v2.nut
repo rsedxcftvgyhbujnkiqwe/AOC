@@ -28,8 +28,8 @@ function processline(line)
 }
 
 local fileblob = file("input/bigboy.txt", "rb");
-local text = "";
 if (fileblob) {
+	local text = "";
 	local size = fileblob.len();
 	local blobData = fileblob.readblob(size);
 	for (local i = 0; i < size; i++) {
