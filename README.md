@@ -1,3 +1,5 @@
-code.py for my code
+My solutions/attempts at [Advent of Code](https://adventofcode.com/)
 
-alt_code.py for other online solutions I wanted to try
+2023 - Python
+
+2024 - Squirrel
