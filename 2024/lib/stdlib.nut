@@ -47,3 +47,9 @@
 {
 	print(text + "\n")
 }
+
+::IsCharNumeric <- function(char)
+{
+	if (char > 47 && char < 58) return true
+	return false
+}
