@@ -53,3 +53,10 @@
 	if (char > 47 && char < 58) return true
 	return false
 }
+
+::printarr <- function(arr)
+{
+	local msg = ""
+	foreach(v in arr) msg += v + " "
+	printl(msg)
+}
