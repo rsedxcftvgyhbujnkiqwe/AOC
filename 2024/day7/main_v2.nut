@@ -12,7 +12,7 @@ function check_line(test_value,line_array,len,index,p2)
 		return false
 	}
 	index++
-	if(cval <= test_value && check_line(test_value-cval,line_array,len,index,p2)) return true
+	if(check_line(test_value-cval,line_array,len,index,p2)) return true
 	if(test_value % cval==0 && check_line(test_value/cval,line_array,len,index,p2)) return true
 	if(p2)
 	{
