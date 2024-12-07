@@ -60,3 +60,9 @@
 	foreach(v in arr) msg += v + " "
 	printl(msg)
 }
+
+::intlen <- function(integer)
+{
+	if(integer==0) return 1
+	return floor(log10(abs(integer)))
+}
