@@ -64,5 +64,5 @@
 ::intlen <- function(integer)
 {
 	if(integer==0) return 1
-	return floor(log10(abs(integer)))
+	return floor(log10(integer)) + 1
 }
