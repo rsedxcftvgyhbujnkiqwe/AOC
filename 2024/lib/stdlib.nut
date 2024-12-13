@@ -66,3 +66,8 @@
 	if(integer==0) return 1
 	return floor(log10(integer)) + 1
 }
+
+::IsInteger <- function(number)
+{
+	return floor(number)==number
+}
