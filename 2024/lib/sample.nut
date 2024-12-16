@@ -12,7 +12,6 @@ if (fileblob) {
 		local char = blobData[i].tochar();
 		if (char=="\n")
 		{
-			//do something with the line
 			text = ""
 		}
 		else
