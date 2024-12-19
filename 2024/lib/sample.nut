@@ -3,7 +3,10 @@ dofile("../lib/stdlib.nut")
 local p1_value = 0
 local p2_value = 0
 
-local fileblob = file("input/smallboy.txt", "rb");
+//local data_file = "input"
+local data_file = "smallboy"
+
+local fileblob = file("input/"+data_file+".txt", "rb");
 if (fileblob) {
 	local size = fileblob.len();
 	local blobData = fileblob.readblob(size);
@@ -23,6 +26,8 @@ if (fileblob) {
 }
 else
 	throw false
+
+
 
 printl("Part 1:")
 printl(p1_value)

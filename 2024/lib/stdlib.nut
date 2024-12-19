@@ -1,3 +1,13 @@
+::multstr <- function(count,string)
+{
+	local output = ""
+	for(local i=0;i<count;i++)
+	{
+		output += string
+	}
+	return output
+}
+
 ::printl <- function(text)
 {
 	print(text + "\n")
@@ -25,4 +35,15 @@
 ::IsInteger <- function(number)
 {
 	return floor(number)==number
+}
+
+::printTable <- function(table, prefix = "") {
+    foreach (key, value in table) {
+        if (typeof(value) == "table") {
+            printl(prefix + "├── " + key);
+            printTable(value, prefix + "│   ");
+        } else {
+            printl(prefix + "├── " + key);
+        }
+    }
 }
