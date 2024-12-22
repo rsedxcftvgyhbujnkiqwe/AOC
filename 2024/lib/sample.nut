@@ -1,4 +1,5 @@
 dofile("../lib/stdlib.nut")
+local starttime = clock()
 
 local p1_value = 0
 local p2_value = 0
@@ -33,3 +34,4 @@ printl("Part 1:")
 printl(p1_value)
 printl("Part 2:")
 printl(p2_value)
+printl("Took " + (clock() - starttime) + "s")

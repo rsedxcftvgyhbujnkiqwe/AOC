@@ -3,6 +3,8 @@ dofile("../lib/stdlib.nut")
 local p1_value = 0
 local p2_value = 0
 
+local starttime = clock()
+
 local grid = []
 
 local start_pos = null;
@@ -102,7 +104,7 @@ local cheats_20 = {}
 local total = path_points.len()
 for(local p = 0; p < path_points.len()-1; p++)
 {
-	printl("checked " + p + "/" + total)
+	// printl("checked " + p + "/" + total)
 	local point = path_points[p]
 	local y = point[0]
 	local x = point[1]
@@ -152,3 +154,4 @@ printl("Part 1:")
 printl(p1_value)
 printl("Part 2:")
 printl(p2_value)
+printl("Runtime: " + (clock() - starttime))

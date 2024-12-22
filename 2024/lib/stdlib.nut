@@ -1,3 +1,5 @@
+::infinity <- pow(2,256)
+
 ::multstr <- function(count,string)
 {
 	local output = ""
@@ -32,6 +34,16 @@
 	return floor(log10(integer)) + 1
 }
 
+::max <- function(arr)
+{
+    local largest = arr[0]
+    for(local i=1;i<arr.len();i++)
+    {
+        if(arr[i]>largest) largest=arr[i]
+    }
+    return largest
+}
+
 ::IsInteger <- function(number)
 {
 	return floor(number)==number
@@ -47,3 +59,30 @@
         }
     }
 }
+
+::generatePermutations <- function(arr, start, end, result) {
+    if (start == end) {
+        result.append(clone arr);
+    } else {
+        for (local i = start; i <= end; i++) {
+            local temp = arr[start];
+            arr[start] = arr[i];
+            arr[i] = temp;
+
+            generatePermutations(arr, start + 1, end, result);
+
+            temp = arr[start];
+            arr[start] = arr[i];
+            arr[i] = temp;
+        }
+    }
+}
+
+::getAllPermutations <- function(arr) {
+    local result = [];
+    generatePermutations(arr, 0, arr.len() - 1, result);
+    return result;
+}
+
+// local chars = [1, 2, 3, 4];
+// local permutations = getAllPermutations(chars);
