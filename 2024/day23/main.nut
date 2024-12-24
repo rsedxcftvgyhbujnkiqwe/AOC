@@ -4,7 +4,7 @@ local starttime = clock()
 local p1_value = 0
 local p2_value = ""
 
-local data_file = "input"
+// local data_file = "input"
 // local data_file = "smallboy"
 
 local connections = {}

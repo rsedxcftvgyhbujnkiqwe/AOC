@@ -86,3 +86,20 @@
 
 // local chars = [1, 2, 3, 4];
 // local permutations = getAllPermutations(chars);
+
+::IntToBinary <- function(num) {
+    if (num == 0) {
+        return "0";
+    }
+
+    local binary = "";
+    while (num > 0) {
+        binary = (num % 2) + binary;
+        num /= 2;
+    }
+    return binary
+}
+
+::zeroPadInt <- function(num, length) {
+    return format("%0" + length + "d", num);
+}
