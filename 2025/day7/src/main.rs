@@ -31,9 +31,9 @@ fn solve(input: String) -> (i64, i64) {
 
     for y in (2..rows).step_by(2) {
         let row = &bytes[y * length..y * length + width];
-		let spread = y/2;
-		let min_x = start.saturating_sub(spread);
-		let max_x = (start+spread).min(width);
+        let spread = y / 2;
+        let min_x = start.saturating_sub(spread);
+        let max_x = (start + spread).min(width);
         for x in min_x..max_x {
             if row[x] == b'^' {
                 let count = running_count[x];
