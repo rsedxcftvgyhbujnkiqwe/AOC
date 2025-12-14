@@ -1,5 +1,4 @@
 use good_lp::{constraint, lp_solve, variable, variables, Expression, Solution, SolverModel};
-use std::cmp::min;
 
 pub fn solve(input: &String) -> (i64, i64) {
     let mut silver: i64 = 0;
@@ -184,14 +183,6 @@ fn solve_system_of_equations(target: Vec<i16>, buttons: Vec<Vec<i16>>) -> i64 {
     for y in 0..nbuttons {
         for x in 0..size {
             total[x] += buttons[y][x] * solution.value(x_vec[y]).round() as i16
-        }
-    }
-
-    let mut bad_match = false;
-
-    for i in 0..size {
-        if target[i] != total[i] {
-            bad_match = true;
         }
     }
 

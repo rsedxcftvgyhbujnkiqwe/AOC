@@ -4,9 +4,9 @@ fn main() {
 
     let start = Instant::now();
 
-    let (silver, gold) = day11::solve(&input);
+    let silver = day11::solve(&input);
 
     let duration = start.elapsed();
 
-    println!("Silver: {silver}\nGold: {gold}\nElapsed: {:?}", duration);
+    println!("Silver: {silver}\nElapsed: {:?}", duration);
 }
